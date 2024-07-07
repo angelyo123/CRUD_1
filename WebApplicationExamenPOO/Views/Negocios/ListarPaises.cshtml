@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebApplicationExamenPOO.Models.Paises>
+
+@{
+    ViewBag.Title = "ListarPaises";
+}
+
+<h2>ListarPaises</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Idpais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombrePais)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idpais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePais)
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Mostrar lista", "ListarConsumidores", null, new {@class="btn btn-info"})

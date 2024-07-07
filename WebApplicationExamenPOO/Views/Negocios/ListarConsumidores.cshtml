@@ -1,0 +1,87 @@
+﻿@model IEnumerable<WebApplicationExamenPOO.Models.Consumidor>
+
+@{
+    ViewBag.Title = "ListarConsumidores";
+}
+
+<h2>ListarConsumidores</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AgregarConsumidor", null, new { @class = "btn btn-primary" })
+</p>
+
+@using (Html.BeginForm("BuscarConsumidor", "Negocios", FormMethod.Get, new { @class = "form-inline mb-3" }))
+{
+    <div class="form-group">
+        @Html.TextBox("nombre", null, new { @class = "form-control mr-2", placeholder = "Buscar por nombre" })
+        <button type="submit" class="btn btn-info">Buscar</button>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idConsumidor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdPais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idConsumidor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("EDITAR", "ActualizarConsumidor", null, new { id = item.idConsumidor }, new { @class = "btn btn-primary" }) |
+
+                @Html.ActionLink("Delete", "EliminarConsumidor", null, new { id = item.idConsumidor }, new { @class = "btn btn-primary" })
+            </td>
+
+
+        </tr>
+
+
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Mostrar lista", "ListarConsumidores", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Mostrar Paises", "ListarPaises", null, new { @class = "btn btn-info" })
+</p>
+
+<div class="alert alert-success">
+    @ViewBag.Mensaje
+</div>
+
+@Html.ActionLink("IR AL PROBLEMA NUMERO 2", "Filtrado", null, new { @class = "btn btn-info" })
